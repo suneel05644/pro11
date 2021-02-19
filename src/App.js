@@ -1,23 +1,59 @@
-import logo from './logo.svg';
 import './App.css';
+import {GoogleLogin} from 'react-google-login' 
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props' 
+
+const   responseGoogle=(response)=>{
+    console.log(response)
+}
+
+const   responseFacebook=(response)=>{
+  console.log(response)
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <br></br>
+      <GoogleLogin 
+      clientId="321619680551-gsevrknhiouih5qhdq70unnbo11lk8q8.apps.googleusercontent.com"
+      onSuccess={responseGoogle}
+      onFailure={responseGoogle} />\
+
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+
+
+
+<FacebookLogin
+    appId="1088597931155576"
+    autoLoad={true}
+    fields="name,email,picture"
+    onClick={responseFacebook}
+    callback={responseFacebook}
+    
+
+    render={renderProps => (
+      <button
+          onClick={renderProps.onClick}
+          disabled={renderProps.disabled}
+          className="App_form_oauth_button"
+      >
+          <i className="fab fa-facebook-f"></i>
+          Login with Facebook
+      </button>
+  )}
+    
+    />
+
+
+
+<br></br>
+    
+     
     </div>
   );
 }
